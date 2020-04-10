@@ -1,33 +1,56 @@
-name: Docker Image CI
+# name: Docker Image CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+# on:
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
 
-
+name: Build Hello World executable
+on: [push, pull_request]
 jobs:
-  myjob:
-    runs-on: ubuntu-latest
+  run:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        ocaml-version: ["4.09.0", "4.08.1"]
     steps:
-    # Those steps are executed directly on the VM
-    - run: ls /
-    - run: echo $HOME
-    - name: Add a file
-      run: touch $HOME/stuff.txt
-    # Those steps are actions, which may run inside a container
-    - uses: docker://berezun/cw-2020:latest
-    - uses: actions/checkout@v1
-#    - uses: ./.github/actions/travis
-    - run: ls
-    - run: git clone https://github.com/dboulytchev/compiler-2020.git
-    - run: ls compiler-2020
-    - run: opam --version
-    - run: opam pin list
-    - run: |
-        cd compiler-2020
-        make
+      - name: Checkout code
+        uses: actions/checkout@v2.0.0
+      - name: Use OCaml ${{ matrix.ocaml-version }}
+        uses: avsm/setup-ocaml@v1.0
+        with:
+          ocaml-version: ${{ matrix.ocaml-version }}
+      - run: opam pin add hello.dev -n .
+      - run: opam depext -yt hello
+      - run: opam install -t . --deps-only
+      - run: opam exec -- dune build
+      - run: opam exec -- dune runtest
+
+# jobs:
+#   myjob:
+#     runs-on: ubuntu-latest
+#     steps:
+#     # Those steps are executed directly on the VM
+#     - run: ls /
+#     - run: echo $HOME
+#     - name: Add a file
+#       run: touch $HOME/stuff.txt
+#     # Those steps are actions, which may run inside a container
+#     - uses: docker://berezun/cw-2020:latest
+#     - uses: actions/checkout@v1
+# #    - uses: ./.github/actions/travis
+#     - run: ls
+#     - run: git clone https://github.com/dboulytchev/compiler-2020.git
+#     - run: ls compiler-2020
+#     - run: opam --version
+#     - run: opam pin list
+#     - run: |
+#         cd compiler-2020
+#         make
 
 #   my_job2:
 #     runs-on: ubuntu-latest
