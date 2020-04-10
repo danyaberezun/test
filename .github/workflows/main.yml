@@ -42,8 +42,9 @@ jobs:
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
       - run:  
+          echo Llls
           ls
-          echo ls
+          echo LllsEnd
       - run:  
           echo opam v
           opam -v
