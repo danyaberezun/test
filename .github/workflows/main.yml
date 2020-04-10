@@ -21,18 +21,32 @@ jobs:
     
     steps:
       - name: Display the path
-        run:
-          ls
+        run: ls
         shell: bash
-
+      - name: test2
+        run: echo $(ls)
+      - name: t1
+        run: |
+          ls
+          echo $(ls)
+        shell: bash
+      - name: t2
+        run: |
+          ls
+          echo $(ls)
+        shell: bash
+  
   container:
     runs-on: ubuntu-latest
     container: berezun/cw-2020
     steps:
-      - run:
+      - run: |
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
-          ls
+          echo $(ls)
+          opam init
+          opam update
+          opam upgrade
           cd /usr/share/compiler-2020
           eval `opam config env`
           ocamlc -v
