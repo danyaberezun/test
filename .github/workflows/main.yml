@@ -18,7 +18,10 @@ jobs:
         sudo apt-get install gcc-multilib
         sudo apt-get upgrade
     - name: Install  opam
-      run: sudo apt-get install opam
+      run: |
+        sudo add-apt-repository ppa:avsm/ppa
+        sudo apt update
+        sudo apt install opam
     - name: opam init
       run: opam init -y
     - name: opam eval
