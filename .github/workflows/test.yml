@@ -1,14 +1,54 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  myjob:
+    runs-on: ubuntu-latest
+    steps:
+    # Those steps are executed directly on the VM
+    - run: ls /
+    - run: echo $HOME
+    - name: Add a file
+      run: touch $HOME/stuff.txt
+    # Those steps are actions, which may run inside a container
+    - uses: docker://berezun/cw-2020:latest
+    - uses: actions/checkout@v1
+    - uses: fangyi-zhou/actions-ocaml@v1
+      with:
+        ocaml_version: 4.08.1
+      run: opam pin list && opam --version
+    - run: opam pin add -n ostap https://github.com/dboulytchev/ostap.git#memoCPS
+    - run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
+    - run: opam pin list
+    - run: lamac -v
+
+
+
 name: Build Hello World executable
 on: [push, pull_request]
 jobs:
-  run:
-    name: Build
+  job:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2.0.0
-      - run: apt-get install opam
-      - run: opam pin add -n ostap https://github.com/dboulytchev/ostap.git#memoCPS
-      - run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
-      - run: opam pin list
-      - run: lamac -v
+      - name: Build
+        run: ls
+        
+
+# name: Build Hello World executable
+# on: [push, pull_request]
+# jobs:
+#   run:
+#     name: Build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2.0.0
+#       - run: apt-get install opam
+#       - run: opam pin add -n ostap https://github.com/dboulytchev/ostap.git#memoCPS
+#       - run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
+#       - run: opam pin list
+#       - run: lamac -v
