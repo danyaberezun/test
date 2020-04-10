@@ -44,7 +44,7 @@ jobs:
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
           echo $(ls)
-          cd /usr/share/compiler-2020
+          ls
           ocamlc -v
           opam pin list
           make
@@ -54,6 +54,7 @@ jobs:
 #          opam update
 #          opam upgrade
 # eval `opam config env`
+# cd /usr/share/compiler-2020
 
 
 #     run:
