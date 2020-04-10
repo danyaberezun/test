@@ -9,20 +9,15 @@
 name: Build Hello World executable
 on: [push, pull_request]
 jobs:
-  run:
-    name: Build
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest]
-        ocaml-version: ["4.07.1"]
+  my-job:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.0.0
-      - name: Use OCaml ${{ matrix.ocaml-version }}
+      - name: Use OCaml ${{ "4.07.1" }}
         uses: avsm/setup-ocaml@v1.0
         with:
-          ocaml-version: ${{ matrix.ocaml-version }}
+          ocaml-version: ${{ "4.07.1" }}
       - run: opam pin list
 #       - run: opam pin add hello.dev -n .
 #       - run: opam depext -yt hello
