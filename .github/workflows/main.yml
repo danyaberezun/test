@@ -17,15 +17,18 @@ jobs:
     - name: Add a file
       run: touch $HOME/stuff.txt
     # Those steps are actions, which may run inside a container
+    - uses: docker://berezun/cw-2020:latest
     - uses: actions/checkout@v1
+#    - uses: ./.github/actions/travis
     - run: ls
     - run: git clone https://github.com/dboulytchev/compiler-2020.git
     - run: ls compiler-2020
+    - run: opam --version
+    - run: opam pin list
     - run: |
         cd compiler-2020
         make
-#    - uses: ./.github/actions/travis
-    - uses: docker://berezun/cw-2020:latest
+
 #   my_job2:
 #     runs-on: ubuntu-latest
 #     container:
