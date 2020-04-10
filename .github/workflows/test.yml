@@ -31,3 +31,5 @@ jobs:
     - run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
     - run: opam pin list
     - run: lamac -v
+    - name: Build and Test Repo
+      run: make
