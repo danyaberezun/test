@@ -27,7 +27,8 @@ jobs:
     steps:
       - run: |
           echo $(ls)
-          opam -v
+          opam --version
+          ocamlc -v
 
 
 # jobs:
