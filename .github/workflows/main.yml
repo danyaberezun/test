@@ -19,7 +19,7 @@ jobs:
     # Those steps are actions, which may run inside a container
     - uses: actions/checkout@v1
     - run: ls
-    - run: git checkout https://github.com/dboulytchev/compiler-2020.git
+    - run: git clone https://github.com/dboulytchev/compiler-2020.git
     - run: ls compiler-2020
     - run: |
         cd compiler-2020
@@ -36,7 +36,7 @@ jobs:
           echo $(ls)
           opam --version
           eval $(opam env)
-          git checkout https://github.com/dboulytchev/compiler-2020.git
+          git clone https://github.com/dboulytchev/compiler-2020.git
           make
 
 
