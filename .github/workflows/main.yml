@@ -46,7 +46,9 @@ jobs:
           ls
           echo LllsEnd.
       - run: |
-          opam -v
+          opam update
+          opam upgrade
+          ocaml -v
         name: Run in container
 # opam init -y
 #          echo $(ls)
