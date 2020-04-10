@@ -25,11 +25,13 @@ jobs:
     container:
       image: berezun/cw-2020
     steps:
+      - uses: actions/checkout@v1
       - run: |
           echo $(ls)
           opam --version
           ocamlc -v
-          cat test.sh
+          opam update
+          make
 
 
 # jobs:
