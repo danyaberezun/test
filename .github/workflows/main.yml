@@ -44,15 +44,18 @@ jobs:
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
           echo $(ls)
-          opam init
-          opam update
-          opam upgrade
           cd /usr/share/compiler-2020
-          eval `opam config env`
           ocamlc -v
           opam pin list
           make
         name: Run in container
+
+#          opam init
+#          opam update
+#          opam upgrade
+# eval `opam config env`
+
+
 #     run:
 #         docker pull berezun/cw-2020
 #         docker run -d -it --name cw-2020 -v $(pwd):/usr/share/compiler-2020 berezun/cw-2020
