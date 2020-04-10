@@ -41,10 +41,14 @@ jobs:
       - run: |
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
+      - run:  
           ls
-          opam init -y
+          echo ls
+      - run:  
+          echo opam v
+          opam -v
         name: Run in container
-
+# opam init -y
 #          echo $(ls)
 #          ls
 #          ocamlc -v
