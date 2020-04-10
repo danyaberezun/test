@@ -6,56 +6,72 @@ on:
   pull_request:
     branches: [ master ]
 
-jobs:
 
+jobs:
+  myjob:
+    runs-on: ubuntu-latest
+    steps:
+    # Those steps are executed directly on the VM
+    - run: ls /
+    - run: echo $HOME
+    - name: Add a file
+      run: touch $HOME/stuff.txt
+    # Those steps are actions, which may run inside a container
+    - uses: actions/checkout@v1
+    - uses: ./.github/actions/my-action
+    - uses: docker://berezun/cw-2020:latest
+
+
+# jobs:
+
+# #   build:
+# #     runs-on: ubuntu-latest
+    
+# #     steps:
+# #       - name: Display the path
+# #         run: echo $PATH
+# #         shell: bash
+# #       - uses: docker://berezun/cw-2020
 #   build:
 #     runs-on: ubuntu-latest
     
 #     steps:
 #       - name: Display the path
-#         run: echo $PATH
+#         run: ls
+#       - name: test2
+#         run: echo $(ls)
+#       - name: t1
+#         run: |
+#           ls
+#           echo $(ls)
+#       - name: t2
+#         run: |
+#           ls
+#           echo $(ls)
 #         shell: bash
-#       - uses: docker://berezun/cw-2020
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Display the path
-        run: ls
-      - name: test2
-        run: echo $(ls)
-      - name: t1
-        run: |
-          ls
-          echo $(ls)
-      - name: t2
-        run: |
-          ls
-          echo $(ls)
-        shell: bash
   
-  container:
-    runs-on: ubuntu-latest
-    container: berezun/cw-2020:latest
-    steps:
-      - run: |
-          echo This job does specify a container.
-          echo It runs in the container instead of the VM.
-      - run:  |
-          echo Llls.
-          ls
-          echo $(ls)
-          echo LllsEnd.
-      - run: |
-          eval $(opam env)
-          ocaml -v
-          opam pin list
-        name: Run in container
+#   container:
+#     runs-on: ubuntu-latest
+#     container: berezun/cw-2020:latest
+#     steps:
+#       - run: |
+#           echo This job does specify a container.
+#           echo It runs in the container instead of the VM.
+#       - run:  |
+#           echo Llls.
+#           ls
+#           echo $(ls)
+#           echo LllsEnd.
+#       - run: |
+#           eval $(opam env)
+#           ocaml -v
+#           opam pin list
+#         name: Run in container
   
-  container2:
-    runs-on: ubuntu-latest
-    steps:
-      - run: docker run -d --name=SAMPLE_APP berezun/cw-2020:latest
+#   container2:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: docker run -d --name=SAMPLE_APP berezun/cw-2020:latest
     
 
 # opam init -y
