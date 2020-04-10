@@ -46,6 +46,7 @@ jobs:
           ls
           echo LllsEnd.
       - run: |
+          opam init
           opam update
           opam upgrade
           ocaml -v
