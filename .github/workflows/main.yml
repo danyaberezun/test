@@ -29,6 +29,7 @@ jobs:
           echo $(ls)
           opam --version
           ocamlc -v
+          cat test.sh
 
 
 # jobs:
