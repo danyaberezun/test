@@ -26,18 +26,18 @@ jobs:
         make
 #    - uses: ./.github/actions/travis
     - uses: docker://berezun/cw-2020:latest
-  my_job2:
-    runs-on: ubuntu-latest
-    container:
-      image: berezun/cw-2020
-    steps:
-      - uses: actions/checkout@v1
-      - run: |
-          echo $(ls)
-          opam --version
-          eval $(opam env)
-          git clone https://github.com/dboulytchev/compiler-2020.git
-          make
+#   my_job2:
+#     runs-on: ubuntu-latest
+#     container:
+#       image: berezun/cw-2020
+#     steps:
+#       - uses: actions/checkout@v1
+#       - run: |
+#           echo $(ls)
+#           opam --version
+#           eval $(opam env)
+#           git clone https://github.com/dboulytchev/compiler-2020.git
+#           make
 
 
 # jobs:
