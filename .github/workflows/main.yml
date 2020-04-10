@@ -22,7 +22,10 @@ jobs:
     - name: opam eval
       run: eval `opam config env`
     - name: opam check
-      run: opam pin list && opam --version
+      run: |
+        opam pin list
+        opam --version
+        ocamlc -v
     - name: install ostap
       run: opam pin add -y ostap https://github.com/dboulytchev/ostap.git#memoCPS
     - name: install lama
