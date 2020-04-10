@@ -19,13 +19,21 @@ jobs:
       run: sudo apt-get install opam
     - name: opam init
       run: opam init -y
-    - name: install libraries
+    - name: opam eval
+      run: eval `opam config env`
+    - name: opam check
+      run: opam pin list && opam --version
+    - name: install ostap
+      run: opam pin add -y ostap https://github.com/dboulytchev/ostap.git#memoCPS
+    - name: install lama
+      run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
+    - name: check
       run: |
-        opam pin list && opam --version
-        opam pin add -y ostap https://github.com/dboulytchev/ostap.git#memoCPS
-        opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
         opam pin list
         lamac -v
+        
+        
+        
 
 
 # name: Build Hello World executable
