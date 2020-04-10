@@ -43,13 +43,15 @@ jobs:
       - run: |
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
-          echo $(ls)
           ls
-          ocamlc -v
-          opam pin list
-          make
+          sudo opam init -y
         name: Run in container
 
+#          echo $(ls)
+#          ls
+#          ocamlc -v
+#          opam pin list
+#          make
 #          opam init
 #          opam update
 #          opam upgrade
