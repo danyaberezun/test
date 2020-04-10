@@ -14,10 +14,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.0.0
-      - name: Use OCaml ${{ "4.08.1" }}
+      - name: Use OCaml ${{ 4.08.1 }}
         uses: avsm/setup-ocaml@v1.0
         with:
-          ocaml-version: ${{ "4.08.1" }}
+          ocaml-version: ${{ 4.08.1 }}
       - run: opam pin list
 #       - run: opam pin add hello.dev -n .
 #       - run: opam depext -yt hello
