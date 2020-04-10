@@ -8,7 +8,7 @@ on:
 
 jobs:
   myjob:
-    runs-on: ubuntu-18.04-i386
+    runs-on: ubuntu-18.04
     steps:
     # Those steps are executed directly on the VM
     - run: ls /
