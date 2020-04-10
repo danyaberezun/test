@@ -13,8 +13,10 @@ jobs:
     # Those steps are executed directly on the VM
     - name: Install
       run: |
+        sudo dpkg --add-architecture i386
         sudo apt-get update --fix-missing
         sudo apt-get install gcc-multilib
+        sudo apt-get upgrade
     - name: Install  opam
       run: sudo apt-get install opam
     - name: opam init
