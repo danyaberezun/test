@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Trololo
 
 on:
   push:
@@ -12,7 +12,9 @@ jobs:
     steps:
     # Those steps are executed directly on the VM
     - name: Install
-      run: sudo apt-get install gcc-multilib
+      run: |
+        sudo apt-get update --fix-missing
+        sudo apt-get install gcc-multilib
     - name: Install  opam
       run: sudo apt-get install opam
     - name: opam init
