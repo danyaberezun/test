@@ -18,7 +18,7 @@ jobs:
       run: touch $HOME/stuff.txt
     # Those steps are actions, which may run inside a container
     - uses: actions/checkout@v1
-    - uses: ./.github/actions/my-action
+    - uses: ./.github/actions/travis
     - uses: docker://berezun/cw-2020:latest
   my_job2:
     runs-on: ubuntu-latest
