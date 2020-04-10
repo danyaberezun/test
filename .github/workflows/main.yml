@@ -31,7 +31,7 @@ jobs:
     - name: install ocaml
       run: |
         eval `opam env`
-        opam switch create 4.10.0
+        opam switch create 4.07.1
         eval `opam env`
         which ocaml
         ocaml -version
