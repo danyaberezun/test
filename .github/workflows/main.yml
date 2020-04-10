@@ -36,13 +36,13 @@ jobs:
   
   container:
     runs-on: ubuntu-latest
-    container: berezun/cw-2020
+    container: berezun/cw-2020:latest
     steps:
       - run: |
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
           ls
-          sudo opam init -y
+          opam init -y
         name: Run in container
 
 #          echo $(ls)
