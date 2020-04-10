@@ -41,6 +41,7 @@ jobs:
       run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
     - name: check
       run: |
+        eval `opam env`
         opam pin list
         lamac -v
         
