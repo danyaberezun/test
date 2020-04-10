@@ -51,12 +51,12 @@ jobs:
           ocaml -v
           opam pin list
         name: Run in container
-
-  im:
-    runs-on: 
-      using: 'docker'
-      image: 'docker://berezun/cw-2020'
-      run: ocaml -v
+  
+  container2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker run -d --name=SAMPLE_APP berezun/cw-2020:latest
+    
 
 # opam init -y
 #          echo $(ls)
