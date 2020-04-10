@@ -16,13 +16,6 @@ jobs:
         sudo dpkg --add-architecture i386
         sudo apt-get update --fix-missing
         sudo apt-get install gcc-multilib
-    - run: ls /
-    - run: echo $HOME
-    - name: Add a file
-      run: touch $HOME/stuff.txt
-    # Those steps are actions, which may run inside a container
-    - uses: docker://berezun/cw-2020:latest
-    - uses: actions/checkout@v1
     - uses: fangyi-zhou/actions-ocaml@v1
       with:
         ocaml_version: 4.08.1
@@ -31,5 +24,6 @@ jobs:
     - run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
     - run: opam pin list
     - run: lamac -v
+    - uses: actions/checkout@v1
     - name: Build and Test Repo
       run: make
