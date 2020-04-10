@@ -22,14 +22,12 @@ jobs:
     steps:
       - name: Display the path
         run: ls
-        shell: bash
       - name: test2
         run: echo $(ls)
       - name: t1
         run: |
           ls
           echo $(ls)
-        shell: bash
       - name: t2
         run: |
           ls
