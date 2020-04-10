@@ -12,8 +12,10 @@ jobs:
     steps:
     # Those steps are executed directly on the VM
     - name: Install
-#      run: sudo dpkg --add-architecture i386
-      run: sudo apt-get install gcc-multilib
+      run: |
+        sudo dpkg --add-architecture i386
+        sudo apt-get update 
+        sudo apt-get install gcc-multilib
     - run: ls /
     - run: echo $HOME
     - name: Add a file
