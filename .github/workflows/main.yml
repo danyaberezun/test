@@ -44,12 +44,12 @@ jobs:
       - run:  |
           echo Llls.
           ls
+          echo $(ls)
           echo LllsEnd.
       - run: |
-          opam init
-          opam update
-          opam upgrade
+          eval $(opam env)
           ocaml -v
+          opam pin list
         name: Run in container
 # opam init -y
 #          echo $(ls)
