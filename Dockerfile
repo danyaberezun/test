@@ -2,22 +2,14 @@ FROM ubuntu:latest
 COPY test.sh /test.sh
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
-    rm -rf /var/lib/apt/lists/
-RUN apt-get -qq update \
-    && apt install -y \
-	libc6-dev-i386 \
-        gcc \
-        make \
-        m4 \
-        ocaml-nox \
-        ocaml-native-compilers \
-        camlp4-extra opam \
-    && opam --version \
-    && add-apt-repository ppa:avsm/ppa \
+    rm -rf /var/lib/apt/lists/*
+RUN dpkg --add-architecture i386 && \
+    apt-get update --fix-missing && \
+    apt-get install gcc-multilib
+RUN add-apt-repository ppa:avsm/ppa \
     && apt update \
     && apt install opam \
-    && opam --version \
-    && opam init --disable-sandboxing \
+    && opam init --disable-sandboxing -y \
     && opam --version \
     && opam switch create 4.07.1 \
     && eval `opam config env`
