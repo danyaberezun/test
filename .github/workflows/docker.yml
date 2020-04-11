@@ -9,6 +9,7 @@ jobs:
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: berezun/test
+        registry: hub.docker.com
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         
