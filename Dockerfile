@@ -9,7 +9,7 @@ RUN apt-get -qq update \
         ocaml-nox \
         ocaml-native-compilers \
         camlp4-extra opam \
-    && opam init --disable-sandboxing \
+    && opam init -y \
     && opam switch create 4.07.1 \
     && eval `opam config env`
 RUN opam pin add -y ostap https://github.com/dboulytchev/ostap.git\#memoCPS \
