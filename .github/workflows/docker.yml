@@ -11,5 +11,6 @@ jobs:
       with:
         repository: berezun/test
         tags: latest
+        dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
