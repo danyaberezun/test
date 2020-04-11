@@ -7,8 +7,8 @@ RUN dpkg --add-architecture i386 && \
     apt-get update --fix-missing -y && \
     apt-get install gcc-multilib -y
 RUN add-apt-repository ppa:avsm/ppa \
-    && apt update \
-    && apt install opam \
+    && apt update -y \
+    && apt install opam -y \
     && opam init --disable-sandboxing -y \
     && opam --version \
     && opam switch create 4.07.1 \
