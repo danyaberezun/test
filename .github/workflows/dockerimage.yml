@@ -16,3 +16,25 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag test:latest
+
+# ==
+#       - name: Build image
+#         run: docker build . --file Dockerfile --tag image
+
+#       - name: Log into registry
+#         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+#       - name: Push image
+#         run: |
+#           docker tag image berezun:test
+#           docker push berezun:test
+#          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+#
+#          # Use Docker `latest` tag convention
+#          [ "$VERSION" == "master" ] && VERSION=latest
+#
+#          echo IMAGE_ID=$IMAGE_ID
+#          echo VERSION=$VERSION
+
+          docker tag image $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
