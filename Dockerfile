@@ -1,5 +1,8 @@
 FROM ubuntu:latest
 COPY test.sh /test.sh
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    rm -rf /var/lib/apt/lists/
 RUN apt-get -qq update \
     && apt install -y \
 	libc6-dev-i386 \
@@ -13,7 +16,9 @@ RUN apt-get -qq update \
     && add-apt-repository ppa:avsm/ppa \
     && apt update \
     && apt install opam \
+    && opam --version \
     && opam init --disable-sandboxing \
+    && opam --version \
     && opam switch create 4.07.1 \
     && eval `opam config env`
 RUN opam pin add -y ostap https://github.com/dboulytchev/ostap.git\#memoCPS \
