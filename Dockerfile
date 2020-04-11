@@ -11,8 +11,9 @@ RUN add-apt-repository ppa:avsm/ppa \
     && apt install opam -y \
     && opam init --disable-sandboxing -y \
     && opam --version \
+    && eval $(opam env) \
     && opam switch create 4.07.1 \
-    && eval `opam config env`
+    && eval $(opam env)
 RUN opam pin add -y ostap https://github.com/dboulytchev/ostap.git\#memoCPS \
     && opam pin add -y lama https://github.com/JetBrains-Research/Lama.git \
     && eval $(opam env) \
