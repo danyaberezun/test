@@ -4,8 +4,8 @@ RUN apt-get update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/*
 RUN dpkg --add-architecture i386 && \
-    apt-get update --fix-missing && \
-    apt-get install gcc-multilib
+    apt-get update --fix-missing -y && \
+    apt-get install gcc-multilib -y
 RUN add-apt-repository ppa:avsm/ppa \
     && apt update \
     && apt install opam \
