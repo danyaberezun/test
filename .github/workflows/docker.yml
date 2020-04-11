@@ -1,5 +1,6 @@
 name: Publish Docker
 on: [push]
+     
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,6 +11,5 @@ jobs:
       with:
         repository: berezun/test
         tags: latest
-#         dockerfile: .github/workflows/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
