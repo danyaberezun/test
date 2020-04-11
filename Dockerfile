@@ -9,9 +9,9 @@ RUN apt-get -qq update \
         ocaml-nox \
         ocaml-native-compilers \
         camlp4-extra opam \
-    && add-apt-repository ppa:avsm/ppa
-    && apt update
-    && apt install opam
+    && add-apt-repository ppa:avsm/ppa \
+    && apt update \
+    && apt install opam \
     && opam init --disable-sandboxing \
     && opam switch create 4.07.1 \
     && eval `opam config env`
