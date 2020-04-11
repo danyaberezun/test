@@ -9,6 +9,7 @@ RUN apt-get -qq update \
         ocaml-nox \
         ocaml-native-compilers \
         camlp4-extra opam \
+    && opam --vesion \
     && add-apt-repository ppa:avsm/ppa \
     && apt update \
     && apt install opam \
