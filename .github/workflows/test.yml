@@ -1,29 +1,29 @@
-name: Docker Image CI
+# name: Docker Image CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+# on:
+#   push:
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
 
-jobs:
-  myjob:
-    runs-on: ubuntu-18.04
-    steps:
-    # Those steps are executed directly on the VM
-    - name: Install
-      run: |
-        sudo dpkg --add-architecture i386
-        sudo apt-get update --fix-missing
-        sudo apt-get install gcc-multilib
-    - uses: fangyi-zhou/actions-ocaml@v1
-      with:
-        ocaml_version: 4.08.1
-    - run: opam pin list && opam --version
-    - run: opam pin add -y ostap https://github.com/dboulytchev/ostap.git#memoCPS
-    - run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
-    - run: opam pin list
-    - run: lamac -v
-    - uses: actions/checkout@v1
-    - name: Build and Test Repo
-      run: make
+# jobs:
+#   myjob:
+#     runs-on: ubuntu-18.04
+#     steps:
+#     # Those steps are executed directly on the VM
+#     - name: Install
+#       run: |
+#         sudo dpkg --add-architecture i386
+#         sudo apt-get update --fix-missing
+#         sudo apt-get install gcc-multilib
+#     - uses: fangyi-zhou/actions-ocaml@v1
+#       with:
+#         ocaml_version: 4.08.1
+#     - run: opam pin list && opam --version
+#     - run: opam pin add -y ostap https://github.com/dboulytchev/ostap.git#memoCPS
+#     - run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
+#     - run: opam pin list
+#     - run: lamac -v
+#     - uses: actions/checkout@v1
+#     - name: Build and Test Repo
+#       run: make
