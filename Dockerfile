@@ -1,5 +1,5 @@
 # Use the official image as a parent image.
-FROM berezun/compiler-2020:latest
+FROM berezun/cw-2020:latest
 
 # Set the working directory.
 # WORKDIR /usr/src/app
