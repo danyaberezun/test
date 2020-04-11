@@ -5,12 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1.0
-    - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
+    - name: build-push
+      uses: docker/build-push-action@v1
       with:
-        name: berezun/test
+        repository: berezun/test
+        tags: latest
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        
- 
