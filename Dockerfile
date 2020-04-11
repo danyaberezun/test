@@ -5,7 +5,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 RUN dpkg --add-architecture i386 && \
     apt-get update --fix-missing -y && \
-    apt-get install gcc-multilib -y
+    apt-get install gcc-multilib make m4 -y
 RUN add-apt-repository ppa:avsm/ppa \
     && apt update -y \
     && apt install opam -y \
