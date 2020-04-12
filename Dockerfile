@@ -18,3 +18,4 @@ RUN opam pin add -y ostap https://github.com/dboulytchev/ostap.git\#memoCPS \
     && opam pin add -y lama https://github.com/JetBrains-Research/Lama.git \
     && eval $(opam env) \
     && PATH=$PATH:/root/.opam/4.07.1/bin
+RUN opam update && opam upgrade && eval $(opam env)
