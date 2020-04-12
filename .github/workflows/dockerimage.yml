@@ -13,8 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: pbuild
-      run: docker build . --file Dockerfile --tag test:latest
+      - uses: actions/checkout@v2
+      - name: pbuild
+        run: docker build . --file Dockerfile --tag test:latest
 
 
 
