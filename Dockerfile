@@ -1,3 +1,3 @@
 FROM berezun/cw-2020
 
-RUN opam pin update && opam pin upgrade -y && eval `opam env`
+RUN opam update && opam upgrade ostap lama -y && eval `opam env`
