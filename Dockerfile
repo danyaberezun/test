@@ -1,3 +1,3 @@
 FROM berezun/cw-2020
 
-RUN opam update && opam upgrade ostap lama -y && eval `opam env`
+RUN opam update GT lama && opam upgrade -y GT lama && eval `opam env`
