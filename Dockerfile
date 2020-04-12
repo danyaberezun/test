@@ -1,3 +1,3 @@
 FROM berezun/cw-2020
 
-RUN opam update && opam upgrade -y && eval `opam env`
+RUN opam pin update && opam pin upgrade -y && eval `opam env`
