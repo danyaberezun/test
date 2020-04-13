@@ -1,0 +1,30 @@
+name: Test-ci
+
+on: push
+
+#  pull_request
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install gcc-multilib
+      run: |
+        sudo dpkg --add-architecture i386
+        sudo apt-get update --fix-missing
+        sudo apt-get install gcc-multilib
+    - name: Install Ocaml (and opam)
+      uses: fangyi-zhou/actions-ocaml@v1
+      with:
+        ocaml_version: 4.08.1
+    - run: opam pin add -y ostap https://github.com/dboulytchev/ostap.git#memoCPS
+    - run: opam pin add -y lama https://github.com/JetBrains-Research/Lama.git
+    - name: Show Info
+      run: |
+        opam --version
+        opam pin list
+        lamac -v
+    - name: checkout branch/pr
+      uses: actions/checkout@v1
+#     - name: Build and Test
+#       run: make
