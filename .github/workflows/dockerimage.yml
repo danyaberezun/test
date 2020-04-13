@@ -14,15 +14,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-#       - name: pbuild
-#         run: docker build . --file Dockerfile --tag berezun/test:latest
+      - name: pbuild
+        run: docker build . --file Dockerfile --tag berezun/test:latest
       - name: Log into registry
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: Push image
-        run: docker push berezun/cw-2020
-#         run: docker push berezun/cw-2020:latest
+        run: docker push berezun/cw-2020:latest
 #        run: docker push berezun/test:latest
-
 
 #    steps:
 #     - uses: actions/checkout@v2
