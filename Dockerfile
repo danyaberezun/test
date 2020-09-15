@@ -1,5 +1,5 @@
-# FROM berezun/cw-2020
-FROM berezun/test
+FROM berezun/cw-2020
+# FROM berezun/test
 
 # COPY test.sh /test.sh
 
