@@ -3,4 +3,4 @@ FROM berezun/test
 
 # COPY test.sh /test.sh
 
-RUN opam pin remove GT && opam remove GT && opam update && opam install GT && opam upgrade && eval `opam env`
+RUN opam pin remove GT --yes && opam remove GT --yes && opam update --yes && opam install GT --yes && opam upgrade --yes && eval `opam env`
