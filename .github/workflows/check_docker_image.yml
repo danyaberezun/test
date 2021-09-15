@@ -2,6 +2,7 @@ name: Check image defined by dockerfile
 
 on: [ push ]
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,3 +16,4 @@ jobs:
       - name: Push image
 #         run: docker push berezun/test:latest
         run: docker push berezun/cw-2020:latest
+
